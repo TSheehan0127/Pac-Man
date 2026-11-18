@@ -1,0 +1,21 @@
+# Restricted course artwork and audio
+/Assets/
+/assets/
+/icon.svg
+/icon.svg.import
+
+# Godot cache and credentials
+.godot/
+/export.cfg
+/export_credentials.cfg
+
+# Exports and archives can contain restricted assets
+/WebExport/
+/builds/
+*.zip
+*.pck
+*.wasm
+
+# Local files
+.DS_Store
+/Scenes/coding files/

@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://k32oytamshkt"]
+
+[ext_resource type="Script" uid="uid://bx2c45jgh70ph" path="res://Scenes/title_screen.gd" id="1_klylv"]
+
+[node name="TitleScreen" type="Control" unique_id=76074327]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1402.0
+offset_bottom = 1396.0
+script = ExtResource("1_klylv")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=62671286]
+layout_mode = 0
+offset_right = 1410.0
+offset_bottom = 1398.0
+color = Color(0, 0, 0, 1)
+
+[node name="MessageLabel" type="Label" parent="." unique_id=250473940]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4390157
+anchor_top = 0.4641834
+anchor_right = 0.5609843
+anchor_bottom = 0.5358166
+offset_left = 65.5
+offset_top = 38.5
+offset_right = -65.5
+offset_bottom = -38.5
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -200)
+theme_override_font_sizes/font_size = 60
+text = "PACMAN"
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=1530456568]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4390157
+anchor_top = 0.4641834
+anchor_right = 0.5609843
+anchor_bottom = 0.5358166
+offset_left = 65.5
+offset_top = 38.5
+offset_right = -65.5
+offset_bottom = -38.5
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -50)
+theme_override_font_sizes/font_size = 50
+text = "SCORE: 0
+"
+
+[node name="Button" type="Button" parent="." unique_id=751358037]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -123.0
+offset_top = 37.0
+offset_right = 123.0
+offset_bottom = 162.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+theme_override_font_sizes/font_size = 50
+text = "PLAY"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

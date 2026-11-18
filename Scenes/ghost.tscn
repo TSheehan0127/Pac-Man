@@ -1,0 +1,278 @@
+[gd_scene format=3 uid="uid://c6v32hmlhftnc"]
+
+[ext_resource type="Script" uid="uid://bxk71uw434dat" path="res://Scenes/ghost.gd" id="1_108wt"]
+[ext_resource type="Texture2D" uid="uid://chkag601yxgxa" path="res://Assets/Ghosts/Ghost_Body_01.png" id="1_e3r4w"]
+[ext_resource type="Texture2D" uid="uid://p87fy77xc55b" path="res://Assets/Ghosts/Ghost_Eyes_Down.png" id="2_108wt"]
+[ext_resource type="Texture2D" uid="uid://duwipfpqmn7ym" path="res://Assets/Ghosts/Ghost_Body_02.png" id="4_3btnm"]
+[ext_resource type="Texture2D" uid="uid://c3r0evigkl8iq" path="res://Assets/Ghosts/Ghost_Vulnerable_Blue_01.png" id="5_st3at"]
+[ext_resource type="Texture2D" uid="uid://c1d12je1cdqeg" path="res://Assets/Ghosts/Ghost_Vulnerable_White_01.png" id="6_7hbae"]
+[ext_resource type="Texture2D" uid="uid://bpqhs4ubxfq1h" path="res://Assets/Ghosts/Ghost_Vulnerable_Blue_02.png" id="7_xoekh"]
+[ext_resource type="Texture2D" uid="uid://bs5cri8tqj14r" path="res://Assets/Ghosts/Ghost_Vulnerable_White_02.png" id="8_vdkt2"]
+[ext_resource type="AudioStream" uid="uid://c3q712utxfgf8" path="res://Assets/pacman_eatghost.wav" id="9_7hbae"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sosj5"]
+radius = 6.871843
+
+[sub_resource type="Animation" id="Animation_taxxh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodySprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_e3r4w")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodySprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EyesSprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PointsLabel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_7hbae"]
+resource_name = "eaten"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointsLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodySprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EyesSprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_st3at"]
+resource_name = "eaten_move"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodySprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EyesSprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_thbej"]
+resource_name = "move"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodySprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("1_e3r4w"), ExtResource("4_3btnm")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodySprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EyesSprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_prwv0"]
+resource_name = "vulnerable"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EyesSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodySprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BodySprite2D:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("5_st3at"), ExtResource("6_7hbae"), ExtResource("7_xoekh"), ExtResource("8_vdkt2")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uta0k"]
+_data = {
+&"RESET": SubResource("Animation_taxxh"),
+&"eaten": SubResource("Animation_7hbae"),
+&"eaten_move": SubResource("Animation_st3at"),
+&"move": SubResource("Animation_thbej"),
+&"vulnerable": SubResource("Animation_prwv0")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_frxtk"]
+radius = 8.333333
+
+[node name="Ghost" type="CharacterBody2D" unique_id=1251050953]
+scale = Vector2(1.2, 1.2)
+collision_layer = 2
+collision_mask = 9
+script = ExtResource("1_108wt")
+
+[node name="BodySprite2D" type="Sprite2D" parent="." unique_id=1042278416]
+texture = ExtResource("1_e3r4w")
+
+[node name="EyesSprite2D" type="Sprite2D" parent="." unique_id=421509132]
+texture = ExtResource("2_108wt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1896465573]
+shape = SubResource("CircleShape2D_sosj5")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=124111226]
+
+[node name="Timers" type="Node" parent="." unique_id=1492870665]
+
+[node name="AtHomeTimer" type="Timer" parent="Timers" unique_id=849253952]
+one_shot = true
+
+[node name="RunAwayTimer" type="Timer" parent="Timers" unique_id=736558129]
+wait_time = 10.0
+one_shot = true
+
+[node name="UpdateTargetPositionTimer" type="Timer" parent="Timers" unique_id=1923499701]
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1173493342]
+libraries/ = SubResource("AnimationLibrary_uta0k")
+autoplay = &"vulnerable"
+
+[node name="GhostArea2D" type="Area2D" parent="." unique_id=1345144127]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GhostArea2D" unique_id=797723416]
+shape = SubResource("CircleShape2D_frxtk")
+
+[node name="PointsLabel" type="Label" parent="." unique_id=801648498]
+visible = false
+offset_left = 10.833333
+offset_top = -27.499998
+offset_right = 42.5
+offset_bottom = -4.499998
+
+[node name="EatGhost" type="AudioStreamPlayer2D" parent="." unique_id=840795007]
+stream = ExtResource("9_7hbae")
+
+[connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
+[connection signal="timeout" from="Timers/AtHomeTimer" to="." method="_on_at_home_timer_timeout"]
+[connection signal="timeout" from="Timers/RunAwayTimer" to="." method="_on_run_away_timer_timeout"]
+[connection signal="timeout" from="Timers/UpdateTargetPositionTimer" to="." method="_on_update_target_position_timer_timeout"]
+[connection signal="body_entered" from="GhostArea2D" to="." method="_on_ghost_area_2d_body_entered"]

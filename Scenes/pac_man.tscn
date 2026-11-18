@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://dxi0gk3s42bcv"]
+
+[ext_resource type="Texture2D" uid="uid://cm42ity0c1tdy" path="res://Assets/PacManAssets-PacMan.png" id="1_2mw3d"]
+[ext_resource type="Script" uid="uid://dv6w2tm4mo5wt" path="res://Scenes/pac_man.gd" id="1_c67fa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sosj5"]
+radius = 12.0
+
+[sub_resource type="Animation" id="Animation_2mw3d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ouydr"]
+resource_name = "die"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_c67fa"]
+resource_name = "move"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ouydr"]
+_data = {
+&"RESET": SubResource("Animation_2mw3d"),
+&"die": SubResource("Animation_ouydr"),
+&"move": SubResource("Animation_c67fa")
+}
+
+[node name="PacMan" type="CharacterBody2D" unique_id=2022403402]
+collision_mask = 24
+script = ExtResource("1_c67fa")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=428436934]
+texture = ExtResource("1_2mw3d")
+hframes = 4
+vframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=103427612]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_sosj5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=232446193]
+libraries/ = SubResource("AnimationLibrary_ouydr")
+autoplay = &"move"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
